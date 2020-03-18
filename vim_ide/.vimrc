@@ -11,7 +11,7 @@
 " Get pathogen up and running
 filetype off
 
-" let $VIMRUNTIME = "/usr/share/vim/vim74"
+"let $VIMRUNTIME = "/usr/share/vim/vim80"
  " To disable a plugin, add it's bundle name to the following list
  let g:pathogen_disabled = [
     \ 'vim-blogit',
@@ -187,9 +187,9 @@ set number
 "set hidden             " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 "
-" colorscheme jellybeans
-" colorscheme Tomorrow-Night-Eighties
-colorscheme molokai
+"colorscheme jellybeans
+colorscheme Tomorrow-Night-Eighties
+"colorscheme molokai
 " colorscheme obsidian
 " colorscheme solarized
 
