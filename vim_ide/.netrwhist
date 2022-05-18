@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/mnt/f/wsl_workspace/vim74-v2367/vim/runtime'
-let g:netrw_dirhist_2='/mnt/f/wsl_workspace'
-let g:netrw_dirhist_3='/mnt/f/wsl_workspace/vimrc_on_wsl_ubuntu'
+let g:netrw_dirhist_cnt =0

@@ -969,12 +969,6 @@ let g:custom_specified_dirs = [
     \ 'kernel/drivers/media/v4l2-core',
     \ 'system/core/include',
     \ 'hardware/libhardware/include',
-    \ 'system/core/libutils',
-    \ 'frameworks/av/camera',
-    \ 'frameworks/av/services/camera',
-    \ 'frameworks/av/include/camera',
-    \ 'frameworks/base/core/java/android/hardware/camera2',
-    \ 'system/media/camera',
     \ ]
 
 " find project root, use autotags F4 feature
@@ -1036,7 +1030,6 @@ let g:autotags_cscope_file_extensions = ".cpp .cc .cxx .m .hpp .hh .h .hxx .c .i
 let g:MyWinHeight=20
 let &cmdwinheight=g:MyWinHeight
 " execute "set cmdwinheight=".g:MyWinHeight
-
 set ic
 
 " qf win
@@ -1141,6 +1134,9 @@ let g:ctrlp_prompt_mappings = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " cSyntaxAfter setting
+
+au! BufRead,BufNewFile,BufEnter *.{cce} set filetype=cpp
+" au! BufRead,BufNewFile,BufEnter *.{cce} setf cce
 au! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript,py} call CSyntaxAfter()
 
 " powerline color setting
@@ -1160,11 +1156,19 @@ nmap <unique> <silent> <Leader># <Plug>MarkSearchAnyPrev
 highlight TrailingSpace ctermbg=red guibg=red
 match TrailingSpace /\s\+$/
 au TabEnter * match TrailingSpace /\s\+$/
+highlight TrailingSpace ctermbg=red guibg=red
+match TrailingSpace /\s\+$/
 
 fu! TrimTrailingSpace()
     %s/\s\+$//e
 endf
 com! TrimTrailingSpace call TrimTrailingSpace()
+
+" highlight HeadSpace ctermbg=red guibg=red
+" match HeadSpace /^  \+/
+
+highlight HeadTAB ctermbg=235 guibg=#666666
+match HeadTAB /^\t\+/
 
 " qf or ll signs config. Caution of cs performance
 let g:vim_addon_signs = { 'provide_qf_command' : 0,
@@ -1183,7 +1187,7 @@ let g:tagbar_map_zoomwin = 'A'
 let g:tagbar_nerdtree_filetype = 'nerdtree'
 
 " disable solarized toggle bg
-
+let g:no_plugin_maps = 0
 
 " add quick log
 
@@ -1194,7 +1198,15 @@ let g:tagbar_nerdtree_filetype = 'nerdtree'
 " com! Lg call QuickLog()
 nnoremap <silent> <Leader>lg OALOGD("%s: ", __func__);<C-[>==2f"i
 
-
+map <F5> :call CompileRun()<CR>
+func! CompileRun()
+    exec "w"
+    if &filetype == 'sh'
+        :!time bash %
+    elseif &filetype == 'python'
+        exec "!time python3 %"
+    endif
+endfunc
 
 
 
