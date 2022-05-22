@@ -13,6 +13,7 @@ filetype off
 
 "let $VIMRUNTIME = "/usr/share/vim/vim80"
  " To disable a plugin, add it's bundle name to the following list
+ " \ 'vim-neocomplcache',
  let g:pathogen_disabled = [
     \ 'vim-blogit',
     \ 'vim-bufkill',
@@ -30,7 +31,6 @@ filetype off
     \ 'vim-leaderf',
     \ 'vim-mwutils',
     \ 'vim-neocomplcache-clang',
-    \ 'vim-neocomplcache',
     \ 'vim-orgmode',
     \ 'vim-sbt',
     \ 'vim-scala',
@@ -41,7 +41,8 @@ filetype off
     \ 'vim-twitvim',
     \ 'vim-ultisnips',
     \ ]
- if v:version < '703584'
+ 
+if v:version < '703584'
      call add(g:pathogen_disabled, 'YouCompleteMe')
  endif
  execute pathogen#infect()
@@ -1208,7 +1209,21 @@ func! CompileRun()
     endif
 endfunc
 
+let g:pydoc_cmd = '~/miniconda3/bin/pydoc'
+" or more portable
 
+" let g:pydoc_cmd = 'python -m pydoc'
+"
+" If you want to open pydoc files in vertical splits or tabs, give the
+" appropriate command in your .vimrc with:
+"
+" let g:pydoc_open_cmd = 'vsplit'
+"
+" or
+"
+let g:pydoc_open_cmd = 'tabnew'
+
+nnoremap <buffer> H :<C-u>execute "!pydoc3 " . expand("<cword>")<CR>
 
 "happy added end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
