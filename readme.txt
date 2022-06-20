@@ -1,3 +1,7 @@
+plan：
+1、update vim74--》vim8x，enable python3
+2、remove not used，vim-ex
+
 use this vimrc must should ln the vimfiles as below
 ln 1, vim runtime patch ,in mycase /usr/local/share:
     vim -> /home/rongshu/workspace/vimrc_on_wsl_ubuntu/vim_env/runtime/
